@@ -4,8 +4,9 @@ import Aturcara from './pages/Aturcara'
 import Lokasi from './pages/Lokasi'
 import Rsvp from './pages/Rsvp'
 import SedangDiselenggara from './pages/SedangDiselenggara'
-import LogIn from './pages/LogIn'
+import DaftarMasuk from './pages/DaftarMasuk'
 import Header from './components/Header'
+import DaftarAkaun from './pages/DaftarAkaun'
 
 export default function App() {
   return (
@@ -16,8 +17,8 @@ export default function App() {
         <Route path="/aturcara" element={<Aturcara />} />
         <Route path="/lokasi" element={<Lokasi />} />
         <Route path="/rsvp" element={<Rsvp />} />
-        <Route path="/log-in" element={<LogIn />} />
-
+        <Route path="/daftar-masuk" element={<DaftarMasuk />} />
+        <Route path="/daftar-akaun" element={<DaftarAkaun />} />
         <Route path="/sedang-diselenggara" element={<SedangDiselenggara />} />
       </Routes>
     </BrowserRouter>
