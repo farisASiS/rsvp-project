@@ -34,10 +34,13 @@ export default function DaftarAkaun() {
       };
       setLoading(false);
       setError(null);
+      alert('Akaun berjaya didaftarkan!');
       navigate('/daftar-masuk');
     } catch (error) {
       setLoading(false);
       setError(error.message);
+      console.log(error.message);
+
     }
   };
   return (
