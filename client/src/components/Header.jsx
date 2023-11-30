@@ -14,40 +14,40 @@ export default function Header() {
     <header className='bg bg-slate-800 p-2 fixed bottom-0 w-[100%]'>
       <div className='flex flex-row space-x-2'>
           <Link className='grow' to='/'>
-            <div className='bg bg-slate-400'>
-              <FaHome className='text-slate-500 h-12 w-12' /> 
-              <span className='text-white'>Utama</span>
+            <div className=' flex flex-col'>
+              <FaHome className='text-slate-500 h-12 w-12 self-center' /> 
+              <span className='text-white self-center'>Utama</span>
             </div>
           </Link>
           <Link className='grow' to='/aturcara'>
-            <div className='bg bg-slate-400'>
-              <IoMdTimer className='text-slate-500 h-12 w-12' /> 
-              <span>Aturcara</span>
+            <div className=' flex flex-col'>
+              <IoMdTimer className='text-slate-500 h-12 w-12 self-center' /> 
+              <span className='text-white self-center'>Aturcara</span>
             </div>
           </Link>
           <Link className='grow' to='/lokasi'>
-            <div className='bg bg-slate-400'>
-              <FaMapLocationDot className='text-slate-500 h-12 w-12' /> 
-              <span>Lokasi</span>
+            <div className=' flex flex-col'>
+              <FaMapLocationDot className='text-slate-500 h-12 w-12 self-center' /> 
+              <span className='text-white self-center'>Lokasi</span>
             </div>
           </Link>
           <Link className='grow' to='/rsvp'>
-            <div className='bg bg-slate-400'>
-              <SlNote className='text-slate-500 h-12 w-12' /> 
-              <span>RSVP</span>
+            <div className=' flex flex-col'>
+              <SlNote className='text-slate-500 h-12 w-12 self-center' /> 
+              <span className='text-white self-center'>RSVP</span>
             </div>
           </Link>
           {currentUser ? 
             <Link className='grow' to='/akaun'>
-              <div className='bg bg-slate-400'>
-              <CgProfile className='text-slate-500 h-12 w-12' /> 
-              <span>Akaun</span>
+              <div className=' flex flex-col'>
+              <CgProfile className='text-slate-500 h-12 w-12 self-center' /> 
+              <span className='text-white self-center'>Akaun</span>
               </div>
             </Link>:
             <Link className='grow' to='/daftar-akaun'>
-              <div className='bg bg-slate-400'>
-              <CiLogin className='text-slate-500 h-12 w-12' /> 
-              <span>Daftar</span>
+              <div className=' flex flex-col'>
+              <CiLogin className='text-slate-500 h-12 w-12 self-center' /> 
+              <span className='text-white self-center'>Daftar</span>
               </div>
             </Link>
           }

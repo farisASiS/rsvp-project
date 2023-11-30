@@ -1,4 +1,5 @@
 import React from 'react';
+import { CgProfile } from "react-icons/cg";
 import { useSelector } from 'react-redux';
 
 export default function Akaun() {
@@ -6,6 +7,7 @@ export default function Akaun() {
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Akaun</h1>
       <form className='flex flex-col gap-4'>
+      <CgProfile className='h-24 w-24 self-center'/>
         <input type="text" placeholder='nama pengguna' className='border p-3 rounded-lg' id='username' />
         <input type="email" placeholder='email' className='border p-3 rounded-lg' id='email' />
         <input type="text" placeholder='kata laluan' className='border p-3 rounded-lg' id='password' />
