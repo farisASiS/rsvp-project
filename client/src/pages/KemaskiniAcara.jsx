@@ -13,6 +13,14 @@ export default function KemaskiniAcara() {
           <input type='text' placeholder='Tajuk' className='border p-3
           rounded-lg' id='title' maxLength='62' minLength='2' required/>
 
+          <div className='flex flex-col flex-1 gap-4'>
+            <p className='font-semibold'>Muatnaik Gambar</p>
+            <div className='flex gap-4'>
+              <input className='p-3 border border-gray-300 rounded w-full' type="file" id='images' accept='image/* multiple' ></input>
+              <button className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'>Muatnaik</button>
+            </div>
+          </div>
+
           <input type='text' placeholder='Penerangan' className='border p-3
           rounded-lg' id='description' maxLength='300' minLength='2' required/>
 
