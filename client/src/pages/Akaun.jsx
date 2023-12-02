@@ -2,6 +2,12 @@ import { useState } from 'react'
 import { CgProfile } from "react-icons/cg";
 import { useSelector, useDispatch } from 'react-redux';
 import { 
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  signOutUserFailure,
+  signOutUserStart,
+  signOutUserSuccess,
   updateUserFailure, 
   updateUserStart, 
   updateUserSuccess, 
@@ -46,6 +52,39 @@ export default function Akaun() {
     }
   };
 
+  const handleDeleteUser = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`,{
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success ===false) {
+        dispatch(deleteUserFailure(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message))
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      dispatch(signOutUserStart());
+      const res = await fetch('/api/auth/signout');
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(signOutUserFailure(data.message));
+        return;
+      }
+      dispatch(signOutUserSuccess(data));
+    } catch (error) {
+      dispatch(signOutUserFailure(data.message));
+      
+    }
+  };
 
   return (
     <div className='p-3 max-w-lg mx-auto'>
@@ -75,14 +114,14 @@ export default function Akaun() {
           id='password' 
           onChange={handleChange}
         />
-        <button disable={loading} className='bg-slate-700 text-white rounded-lg 
+        <button disabled={loading} className='bg-slate-700 text-white rounded-lg 
           p-3 uppercase hover:opacity-95 disabled:opacity-80'>
           {loading ? 'Loading...' : 'Kemaskini'}
         </button>
       </form>
       <div className='flex justify-between mt-5'>
-        <span className='text-red-700 cursor-pointer'>Hapus Akaun</span>
-        <span className='text-red-700 cursor-pointer'>Daftar Keluar</span>
+        <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>Hapus Akaun</span>
+        <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>Daftar Keluar</span>
       </div>
       <p className='text-red-700 mt-5' >{error ? error: ''}</p>
       <p className='text-green-700 mt-5' >{updateSuccess ? 'Akaun berjaya dikemaskini!': ''}</p>
