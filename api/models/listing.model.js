@@ -10,15 +10,7 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    dateTitle:{
-      type: String,
-      required: true,
-    },
     date:{
-      type: String,
-      required: true,
-    },
-    timeTitle:{
       type: String,
       required: true,
     },
@@ -26,11 +18,11 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    locationTitle:{
+    location:{
       type: String,
       required: true,
     },
-    location:{
+    userRef:{
       type: String,
       required: true,
     },

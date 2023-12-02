@@ -9,6 +9,7 @@ import Header from './components/Header'
 import DaftarAkaun from './pages/DaftarAkaun'
 import PrivateRoute from './components/PrivateRoute'
 import Akaun from './pages/Akaun'
+import KemaskiniAcara from './pages/KemaskiniAcara'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/rsvp" element={<Rsvp />} />
         <Route element={<PrivateRoute />}>
           <Route path="/akaun" element={<Akaun />} />
+          <Route path="/kemaskini-acara" element={<KemaskiniAcara />} />
         </Route>
         <Route path="/daftar-masuk" element={<DaftarMasuk />} />
         <Route path="/daftar-akaun" element={<DaftarAkaun />} />

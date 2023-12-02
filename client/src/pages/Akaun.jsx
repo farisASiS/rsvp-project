@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CgProfile } from "react-icons/cg";
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { 
   deleteUserFailure,
   deleteUserStart,
@@ -118,6 +119,9 @@ export default function Akaun() {
           p-3 uppercase hover:opacity-95 disabled:opacity-80'>
           {loading ? 'Loading...' : 'Kemaskini'}
         </button>
+        <Link to="/kemaskini-acara" className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' >
+          Kemaskini acara
+        </Link>
       </form>
       <div className='flex justify-between mt-5'>
         <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>Hapus Akaun</span>
