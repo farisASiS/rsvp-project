@@ -20,6 +20,8 @@ export default function Akaun() {
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [showListingsError, setShowListingsError] = useState(false);
+  const [userListings, setUserListings] = useState([]);
 
   const handleChange = (e) => {
     setFormData(
@@ -87,6 +89,22 @@ export default function Akaun() {
     }
   };
 
+  const handleShowListings = async () => {
+    try {
+      setShowListingsError(false);
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const data = await res.json();
+      if (data.success === false) {
+        setShowListingsError(true);
+        return;
+      }
+
+      setUserListings(data);
+    } catch (error) {
+      setShowListingsError(true);
+    }
+  };
+
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Hi {currentUser.username}!</h1>
@@ -129,6 +147,33 @@ export default function Akaun() {
       </div>
       <p className='text-red-700 mt-5' >{error ? error: ''}</p>
       <p className='text-green-700 mt-5' >{updateSuccess ? 'Akaun berjaya dikemaskini!': ''}</p>
+      <button onClick={handleShowListings} className='text-green-700 w-full'>Paparan Acara</button>
+      <p className='text-red-700 mt-5'>{showListingsError ? 
+      'Kesilapan paparan acara':''}</p>
+
+      {userListings && 
+        userListings.length > 0 && 
+        <div className='flex flex-col gap-4'>
+          <h1 className='text-center mt-7 text-2xl font-semibold'>Acara Anda</h1>
+          {userListings.map((listing) => (
+            <div key={listing._id}
+            className='border rounded-lg p-3 flex justify-between items-center gap-4'>
+              <Link to={`/acara/${listing._id}`}>
+                <img src={listing.imageUrls[0]} alt="listing cover" 
+                className='h-16 w-16 object-contain'/>
+              </Link>
+              <Link className='flex-1 text-slate-700 font-semibold hover:underline truncate' 
+              to={`/acara/${listing._id}`}>
+                <p>{listing.title}</p>
+              </Link>
+
+              <div className='flex flex-col items-center'>
+                <button className='text-red-700 uppercase'>Hapus</button>
+                <button className='text-green-700 uppercase'>Kemaskini</button>
+              </div>
+            </div>
+          ))}
+        </div>}
     </div>
-  )
+  );
 }
