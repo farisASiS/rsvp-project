@@ -187,7 +187,9 @@ export default function Akaun() {
 
               <div className='flex flex-col items-center'>
                 <button onClick={() => handleListingDelete(listing._id)} className='text-red-700 uppercase'>Hapus</button>
+                <Link to={`/kemaskini-acara/${listing._id}`}>
                 <button className='text-green-700 uppercase'>Kemaskini</button>
+                </Link>
               </div>
             </div>
           ))}
