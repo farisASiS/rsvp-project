@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
 import { getDownloadURL, getStorage, uploadBytesResumable, ref } from 'firebase/storage';
 import { app } from '../firebase';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
-export default function KemaskiniAcara() {
+export default function CiptaAcara() {
+  const {currentUser} = useSelector(state => state.user);
+  const navigate = useNavigate();
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
     imageUrls: [],
+    title: '',
+    description: '',
+    date: '',
+    time: '',
+    location: '',
   });
   const [imageUploadError, setImageUploadError] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   console.log(formData);
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length <7) {
@@ -70,17 +81,58 @@ export default function KemaskiniAcara() {
       index),
     })
   };
+
+  const handleChange = (e) => {
+    if(e.target.type === 'text' || e.target.type === 'textarea'){
+      setFormData({
+        ...formData,
+        [e.target.id]: e.target.value
+      })
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      if(formData.imageUrls.length < 1) return setError('Anda perlu muatnaik sekurang-kurangnya 1 gambar');
+      setLoading(true);
+      setError(false);
+      const res = await fetch('api/listing/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          userRef: currentUser._id,
+        }),
+      });
+
+      const data = await res.json();
+      setLoading(false);
+      if(data.success === false){
+        setError(data.message);
+      }
+      navigate(`/listing/${data._id}`);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  };
+
   return (
     <main className='p-3 max-w-4xl mx-auto'>
       <div className='text-3xl font-semibold text-center my-7' >
-        Kemaskini Acara
+        Cipta Acara
       </div>
-      <form className='flex flex-col sm:flex-row' >
-        <div className='flex flex-col gap-4 flex-1' >
+      <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row' >
+        <div className='flex flex-col gap-4 flex-1 mb-20' >
 
           <h1 className='text-xl font-semibold text-center my-1'>Halaman Utama</h1>
           <input type='text' placeholder='Tajuk' className='border p-3
-          rounded-lg' id='title' maxLength='62' minLength='2' required/>
+          rounded-lg' id='title' maxLength='62' minLength='2' required
+          onChange={handleChange} value={formData.title} />
 
           <div className='flex flex-col flex-1 gap-2'>
             <p className='font-semibold'>Muatnaik Gambar</p>
@@ -100,21 +152,22 @@ export default function KemaskiniAcara() {
             }
           </div>
 
-          <input type='text' placeholder='Penerangan' className='border p-3
-          rounded-lg' id='description' maxLength='300' minLength='2' required/>
+          <textarea type='text' placeholder='Penerangan' className='border p-3
+          rounded-lg' id='description' required onChange={handleChange} value={formData.description} />
 
           <input type='text' placeholder='Tarikh' className='border p-3
-          rounded-lg' id='date' required/>
+          rounded-lg' id='date' required onChange={handleChange} value={formData.date}/>
 
           <input type='text' placeholder='Masa' className='border p-3
-          rounded-lg' id='time' required/>
+          rounded-lg' id='time' required onChange={handleChange} value={formData.time}/>
 
           <input type='text' placeholder='Lokasi' className='border p-3
-          rounded-lg' id='location' required/>
-          <button className='p-3 bg-slate-700 text-white rounded-lg
+          rounded-lg' id='location' required onChange={handleChange} value={formData.location}/>
+          <button disabled={loading || uploading} className='p-3 mb-10 bg-slate-700 text-white rounded-lg
           uppercase hover:opacity-95 disabled:opacity-80'>
-            Kemaskini Acara
+            {loading ? 'Mencipta...' : 'Cipta acara'}
           </button>
+          {error && <p className='text-red-700 text-sm'>{error}</p>}
         </div>
       </form>
     </main>

@@ -22,6 +22,10 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    imageUrls:{
+      type: Array,
+      required: true,
+    },
     userRef:{
       type: String,
       required: true,
