@@ -105,8 +105,26 @@ export default function Akaun() {
     }
   };
 
+  const handleListingDelete = async (listingId) => {
+    try {
+      const res = await fetch(`/api/listing/delete/${listingId}`,{
+      method: 'DELETE',
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
+      }
+
+      setUserListings((prev) => 
+      prev.filter((listing) => listing._id !== listingId))
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
-    <div className='p-3 max-w-lg mx-auto'>
+    <div className='p-3 mb-5 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Hi {currentUser.username}!</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <CgProfile className='h-24 w-24 self-center'/>
@@ -153,7 +171,7 @@ export default function Akaun() {
 
       {userListings && 
         userListings.length > 0 && 
-        <div className='flex flex-col gap-4'>
+        <div className='mb-20 flex flex-col gap-4'>
           <h1 className='text-center mt-7 text-2xl font-semibold'>Acara Anda</h1>
           {userListings.map((listing) => (
             <div key={listing._id}
@@ -168,7 +186,7 @@ export default function Akaun() {
               </Link>
 
               <div className='flex flex-col items-center'>
-                <button className='text-red-700 uppercase'>Hapus</button>
+                <button onClick={() => handleListingDelete(listing._id)} className='text-red-700 uppercase'>Hapus</button>
                 <button className='text-green-700 uppercase'>Kemaskini</button>
               </div>
             </div>
