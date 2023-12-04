@@ -124,7 +124,7 @@ export default function Akaun() {
   };
 
   return (
-    <div className='p-3 mb-5 max-w-lg mx-auto'>
+    <div className='p-3 mb-20 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Hi {currentUser.username}!</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <CgProfile className='h-24 w-24 self-center'/>

@@ -40,19 +40,26 @@ export default function Acara() {
       {listing && !loading && !error && 
       (
         <div>
-        <Swiper navigation>
-          {listing.imageUrls.map((url) => (
-            <SwiperSlide key={url}>
-              <div
-               className='h-[550px]'
-               style={{
-                 background: `url(${url}) center no-repeat`, backgroundSize: 'cover'
-               }}>
-                
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <Swiper navigation>
+            {listing.imageUrls.map((url) => (
+              <SwiperSlide key={url}>
+                <div
+                className='h-[550px]'
+                style={{
+                  background: `url(${url}) center no-repeat`, backgroundSize: 'cover'
+                }}>
+                  
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
+            <p className='text-2xl font-semibold'>{listing.title}</p>
+            <p className='text-slate-800'>{listing.description}</p>
+            <p className='text-slate-600'>{listing.date}</p>
+            <p className='text-slate-600'>{listing.time}</p>
+            <p className='text-slate-600'>{listing.location}</p>
+          </div>
         </div>
       )}
     </main>

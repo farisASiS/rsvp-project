@@ -11,30 +11,12 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const {currentUser} = useSelector(state => state.user);
   return (
-    <header className='bg bg-slate-800 p-2 fixed bottom-0 w-[100%]'>
+    <header className='bg bg-slate-800 p-2 w-[100%]'>
       <div className='flex flex-row space-x-2'>
           <Link className='grow' to='/'>
             <div className=' flex flex-col'>
               <FaHome className='text-slate-500 h-12 w-12 self-center' /> 
               <span className='text-white self-center'>Utama</span>
-            </div>
-          </Link>
-          <Link className='grow' to='/aturcara'>
-            <div className=' flex flex-col'>
-              <IoMdTimer className='text-slate-500 h-12 w-12 self-center' /> 
-              <span className='text-white self-center'>Aturcara</span>
-            </div>
-          </Link>
-          <Link className='grow' to='/lokasi'>
-            <div className=' flex flex-col'>
-              <FaMapLocationDot className='text-slate-500 h-12 w-12 self-center' /> 
-              <span className='text-white self-center'>Lokasi</span>
-            </div>
-          </Link>
-          <Link className='grow' to='/rsvp'>
-            <div className=' flex flex-col'>
-              <SlNote className='text-slate-500 h-12 w-12 self-center' /> 
-              <span className='text-white self-center'>RSVP</span>
             </div>
           </Link>
           {currentUser ? 
