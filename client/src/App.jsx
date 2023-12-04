@@ -11,6 +11,7 @@ import PrivateRoute from './components/PrivateRoute'
 import Akaun from './pages/Akaun'
 import CiptaAcara from './pages/CiptaAcara'
 import KemaskiniAcara from './pages/KemaskiniAcara'
+import Acara from './pages/Acara'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/aturcara" element={<Aturcara />} />
         <Route path="/lokasi" element={<Lokasi />} />
         <Route path="/rsvp" element={<Rsvp />} />
+        <Route path='/acara/:listingId' element={<Acara/>} />
         <Route element={<PrivateRoute />}>
           <Route path="/akaun" element={<Akaun />} />
           <Route path="/cipta-acara" element={<CiptaAcara />} />
