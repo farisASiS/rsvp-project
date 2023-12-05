@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import {useParams} from 'react-router-dom';
+import { FaWhatsapp } from "react-icons/fa";
+import { IoIosCall } from "react-icons/io";
+import { BsCalendarDate } from "react-icons/bs";
+import { LuAlarmClock } from "react-icons/lu";
+import { MdLocationOn } from "react-icons/md";
+import {useParams, Link} from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import {Navigation} from 'swiper/modules';
@@ -34,9 +39,9 @@ export default function Acara() {
     fetchListing();
   }, [params.listingId]);
   return (
-    <main>
-      {loading && <p className='text-center my-7 text-2xl'>Loading...</p>}
-      {error && <p className='text-center my-7 text-2xl'>Kesilapan Paparan Halaman!</p>}
+    <main className=''>
+      {loading && <p className='text-center text-[#038CA2] my-7 text-2xl'>Loading...</p>}
+      {error && <p className='text-center text-[#038CA2] my-7 text-2xl'>Kesilapan Paparan Halaman!</p>}
       {listing && !loading && !error && 
       (
         <div>
@@ -53,12 +58,61 @@ export default function Acara() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
-            <p className='text-2xl font-semibold'>{listing.title}</p>
-            <p className='text-slate-800'>{listing.description}</p>
-            <p className='text-slate-600'>{listing.date}</p>
-            <p className='text-slate-600'>{listing.time}</p>
-            <p className='text-slate-600'>{listing.location}</p>
+          <div className='flex flex-col max-w-4xl mx-auto px-5 my-7 gap-4'>
+            <p className='text-2xl text-[#038CA2] uppercase font-bold'>{listing.title}</p>
+            <p className='text-slate-500'>{listing.description}</p>
+            <div className='flex gap-2'>
+              <BsCalendarDate className='h-5 w-5 text-[#038CA2]' />
+              <p className='text-slate-500'>{listing.date}</p>
+            </div>
+            <div className='flex gap-2'>
+              <LuAlarmClock className='h-5 w-5 text-[#038CA2]' />
+              <p className='text-slate-500'>{listing.time}</p>
+            </div>
+            <div className='flex gap-2'>
+             <MdLocationOn className='h-5 w-5 text-[#038CA2]'/>
+             <p className='text-slate-500'>{listing.location}</p>
+            </div>
+            <Link to="https://maps.app.goo.gl/JGZwLBaL9KcQsXRh9"> {/* fetch rsvp */}
+              <p className='text-blue-500 underline'>Buka lokasi di Google map</p>
+            </Link>
+            <div className='flex gap-2'>
+              <Link to="https://api.whatsapp.com/send?phone=60126735145"> {/* fetch rsvp */}
+               <FaWhatsapp className='h-5 w-5 text-[#038CA2]' />
+              </Link>
+              <Link to="tel:01163430496">
+               <IoIosCall className='h-5 w-5 text-[#038CA2]' /> {/* fetch rsvp */}
+              </Link>
+              <p className='text-slate-500'>En Rizalman</p> {/* fetch rsvp */}
+            </div>
+            <hr />
+            <p className='text-xl text-[#038CA2] uppercase font-semibold text-center'>RSVP</p>
+
+            <form className='flex flex-col gap-4'>
+              <input 
+                type="text" 
+                placeholder='nama'                
+                className='border p-3 rounded-3xl drop-shadow-md' 
+                id='username' 
+              />
+              <input 
+                type="email" 
+                placeholder='email' 
+                className='border p-3 rounded-3xl drop-shadow-md' 
+                id='email' 
+              />
+              <input 
+                type="text" 
+                placeholder='nombor telefon' 
+                className='border p-3 rounded-3xl drop-shadow-md' 
+                id='password' 
+              />
+              <button className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+              disabled:-80 my-5'>
+                Hantar RSVP
+              </button>
+            </form>
+
           </div>
         </div>
       )}

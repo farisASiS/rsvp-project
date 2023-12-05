@@ -1,16 +1,39 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function Utama() {
+  const {currentUser} = useSelector(state => state.user);
+
   return (
-    <div className='py-10 px-10 space-y-4'>
-      <h1 className='text-center text-5xl'>Walimatulurus</h1>
-      <h1 className='text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</h1>
-      <h1 className='text-center text-3xl'>Tarikh</h1>
-      <h1 className='text-center '>1 Januari 2023</h1>
-      <h1 className='text-center text-3xl'>Masa</h1>
-      <h1 className='text-center'>10 a.m - 5 p.m</h1>
-      <h1 className='text-center text-3xl'>Tempat</h1>
-      <h1 className='text-center'>KLCC</h1>
+    <div className='gradient_background py-[200px] px-10 4'>
+      <h1 className='text-[#87DCCF] italic text-[20px] font-bold'>MUDAH DAN PANTAS</h1>
+      <h1 className='text-white text-[48px] font-bold leading-[100%]'>KEMUDAHAN RSVP DI HUJUNG JARI ANDA</h1>
+      <h1 className='text-white mt-2'>Kemudahan RSVP secara online bagi jemputan anda dan lengkap berserta kemudahan pengendalian pendaftaran untuk urus setia dan juga pengunjung</h1>
+      <div className='flex flex-col gap-5 mt-10'>
+      {currentUser ? '' :
+        <Link to={'/daftar-akaun'} className='flex flex-col '>
+          <button className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        disabled:-80 '>Daftar Sekarang</button>
+        </Link>
+      }
+      {currentUser ? '' :
+        <h1 className='text-white text-center'>Sudah mempunyai akaun?</h1>
+      }
+      {currentUser ? '' :
+        <Link to={'/daftar-masuk'} className='flex flex-col '>
+          <button className='border-solid border-2 border-white text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 disabled:-80'>Daftar Masuk</button>
+        </Link>
+      }
+      {currentUser ?         
+        <Link to={'/cipta-acara'} className='flex flex-col '>
+          <button className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 disabled:-80 '>Cipta Acara Sekarang</button>
+        </Link>
+      : ''}
+      </div> : <div></div> 
+
+
+
     </div>
   )
 }

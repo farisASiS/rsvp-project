@@ -123,19 +123,18 @@ export default function CiptaAcara() {
 
   return (
     <main className='p-3 max-w-4xl mx-auto'>
-      <div className='text-3xl font-semibold text-center my-7' >
+      <div className='text-[#0086A4] text-5xl text-center font-semibold my-7' >
         Cipta Acara
       </div>
       <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row' >
         <div className='flex flex-col gap-4 flex-1 mb-20' >
 
-          <h1 className='text-xl font-semibold text-center my-1'>Halaman Utama</h1>
-          <input type='text' placeholder='Tajuk' className='border p-3
-          rounded-lg' id='title' maxLength='62' minLength='2' required
+          <h1 className='text-xl text-[#038CA2] font-semibold'>Tajuk</h1>
+          <input type='text' placeholder='Tajuk' className='border p-3 rounded-3xl drop-shadow-md' id='title' maxLength='62' minLength='2' required
           onChange={handleChange} value={formData.title} />
 
           <div className='flex flex-col flex-1 gap-2'>
-            <p className='font-semibold'>Muatnaik Gambar</p>
+            <p className='text-xl text-[#038CA2] font-semibold'>Muatnaik Gambar</p>
             <div className='flex gap-4'>
               <input onChange={(e)=>setFiles(e.target.files)} className='p-3 border border-gray-300 rounded w-full' type="file" id='images' accept='image/*' multiple ></input>
               <button type='button' disabled={uploading} onClick={handleImageSubmit} className='p-3 text-green-700 border border-green-700 rounded uppercase hover:shadow-lg disabled:opacity-80'>
@@ -152,19 +151,22 @@ export default function CiptaAcara() {
             }
           </div>
 
+          <p className='text-xl text-[#038CA2] font-semibold'>Penerangan</p>
           <textarea type='text' placeholder='Penerangan' className='border p-3
           rounded-lg' id='description' required onChange={handleChange} value={formData.description} />
 
-          <input type='text' placeholder='Tarikh' className='border p-3
-          rounded-lg' id='date' required onChange={handleChange} value={formData.date}/>
+          <p className='text-xl text-[#038CA2] font-semibold'>Tarikh</p>
+          <input type='text' placeholder='Tarikh' className='border p-3 rounded-3xl drop-shadow-md' id='date' required onChange={handleChange} value={formData.date}/>
 
-          <input type='text' placeholder='Masa' className='border p-3
-          rounded-lg' id='time' required onChange={handleChange} value={formData.time}/>
+          <p className='text-xl text-[#038CA2] font-semibold'>Masa</p>
+          <input type='text' placeholder='Masa' className='border p-3 rounded-3xl drop-shadow-md' id='time' required onChange={handleChange} value={formData.time}/>
 
-          <input type='text' placeholder='Lokasi' className='border p-3
-          rounded-lg' id='location' required onChange={handleChange} value={formData.location}/>
-          <button disabled={loading || uploading} className='p-3 mb-10 bg-slate-700 text-white rounded-lg
-          uppercase hover:opacity-95 disabled:opacity-80'>
+          <p className='text-xl text-[#038CA2] font-semibold'>Lokasi</p>
+          <input type='text' placeholder='Lokasi' className='border p-3 rounded-3xl drop-shadow-md' id='location' required onChange={handleChange} value={formData.location}/>
+
+
+          <button disabled={loading || uploading} className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        disabled:-80 my-5'>
             {loading ? 'Mencipta...' : 'Cipta acara'}
           </button>
           {error && <p className='text-red-700 text-sm'>{error}</p>}

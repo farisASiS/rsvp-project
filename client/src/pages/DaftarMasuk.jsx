@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { CgProfile } from "react-icons/cg";
 import { 
   signInStart, 
   signInSuccess, 
@@ -38,28 +39,31 @@ export default function DaftarMasuk() {
         return;
       }
       dispatch(signInSuccess(data));
-      navigate('/');
+      navigate('/akaun');
     } catch (error) {
       dispatch(signInFailure(error.message));
     }
   };
   return (
-    <div className='p-3 max-w-lg mx-auto'>
-      <h1 className = 'text-3xl text-center font-semibold my-7'>Daftar Masuk</h1>
+    <div className='gradient_background p-3 pt-20 max-w-lg mx-auto'>
+      <h1 className = 'text-white text-5xl text-center font-semibold my-7'>Daftar Masuk</h1>
+      <CgProfile className='text-white mx-auto h-[150px] w-[150px] my-7' />
+
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input type="text" placeholder='email'
-        className='border p-3 rounded-lg' id='email' onChange={handleChange}/>
+        className='border p-3 rounded-3xl drop-shadow-md' id='email' onChange={handleChange}/>
         <input type="password" placeholder='kata laluan'
-        className='border p-3 rounded-lg' id='password' onChange={handleChange}/>
-        <button disabled = {loading} className='bg bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 
-        disabled:-80'>
+        className='border p-3 rounded-3xl drop-shadow-md' id='password' onChange={handleChange}/>
+        <button disabled = {loading} className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        disabled:-80 my-5'>
           {loading ? 'Loading...' : 'Daftar Masuk'}
           </button>
       </form>
-      <div className='flex gap-2 mt-5'>
-        <p>Tidak mempunyai akaun?</p>
-        <Link to={'/daftar-akaun'}>
-          <span className='text-blue-700'>Daftar Akaun</span>
+      <div>
+        <p className='text-white text-center'>Belum mempunyai akaun?</p>
+        <Link to={'/daftar-akaun'} className='flex flex-col gap-4 my-5'>
+          <button className='border-solid border-2 border-white text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        disabled:-80'>Daftar Akaun</button>
         </Link>
       </div>
       {error && <p className='text-red-500 mt-5'>{error}</p>}

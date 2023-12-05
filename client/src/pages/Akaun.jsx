@@ -125,14 +125,14 @@ export default function Akaun() {
 
   return (
     <div className='p-3 mb-20 max-w-lg mx-auto'>
-      <h1 className='text-3xl font-semibold text-center my-7'>Hi {currentUser.username}!</h1>
+      <h1 className='text-[#0086A4] text-5xl text-center font-semibold my-7'>Hi {currentUser.username}!</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-        <CgProfile className='h-24 w-24 self-center'/>
+        <CgProfile className='text-[#0086A4] mx-auto h-[150px] w-[150px] my-7'/>
         <input 
           type="text" 
           placeholder='nama pengguna' 
           defaultValue={currentUser.username}
-          className='border p-3 rounded-lg' 
+          className='border p-3 rounded-3xl drop-shadow-md' 
           id='username' 
           onChange={handleChange}
         />
@@ -140,22 +140,23 @@ export default function Akaun() {
           type="email" 
           placeholder='email' 
           defaultValue={currentUser.email}
-          className='border p-3 rounded-lg' 
+          className='border p-3 rounded-3xl drop-shadow-md' 
           id='email' 
           onChange={handleChange}
         />
         <input 
           type="text" 
           placeholder='kata laluan' 
-          className='border p-3 rounded-lg' 
+          className='border p-3 rounded-3xl drop-shadow-md' 
           id='password' 
           onChange={handleChange}
         />
-        <button disabled={loading} className='bg-slate-700 text-white rounded-lg 
-          p-3 uppercase hover:opacity-95 disabled:opacity-80'>
-          {loading ? 'Loading...' : 'Kemaskini'}
+        <button disabled={loading} className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        disabled:-80 my-5'>
+          {loading ? 'Loading...' : 'Kemaskini Profil'}
         </button>
-        <Link to="/cipta-acara" className='bg-green-700 text-white p-3 rounded-lg uppercase text-center hover:opacity-95' >
+        <Link to="/cipta-acara" className='border-solid border-2 border-[#0086A4] text-[#0086A4] p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        disabled:-80 text-center' >
           Cipta acara
         </Link>
       </form>
@@ -165,22 +166,23 @@ export default function Akaun() {
       </div>
       <p className='text-red-700 mt-5' >{error ? error: ''}</p>
       <p className='text-green-700 mt-5' >{updateSuccess ? 'Akaun berjaya dikemaskini!': ''}</p>
-      <button onClick={handleShowListings} className='text-green-700 w-full'>Paparan Acara</button>
+      <button onClick={handleShowListings} className='bg-[#0086A3] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        disabled:-80 w-full'>Paparan Acara</button>
       <p className='text-red-700 mt-5'>{showListingsError ? 
       'Kesilapan paparan acara':''}</p>
 
       {userListings && 
         userListings.length > 0 && 
         <div className='mb-20 flex flex-col gap-4'>
-          <h1 className='text-center mt-7 text-2xl font-semibold'>Acara Anda</h1>
+          <h1 className='text-[#0086A4] text-center mt-7 text-2xl font-semibold'>Acara Anda</h1>
           {userListings.map((listing) => (
             <div key={listing._id}
-            className='border rounded-lg p-3 flex justify-between items-center gap-4'>
+            className='border border-[#0086A4] drop-shadow-md rounded-lg p-3 flex justify-between items-center gap-4'>
               <Link to={`/acara/${listing._id}`}>
                 <img src={listing.imageUrls[0]} alt="listing cover" 
                 className='h-16 w-16 object-contain'/>
               </Link>
-              <Link className='flex-1 text-slate-700 font-semibold hover:underline truncate' 
+              <Link className='flex-1 text-[#0086A4] font-semibold hover:underline truncate' 
               to={`/acara/${listing._id}`}>
                 <p>{listing.title}</p>
               </Link>

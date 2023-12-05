@@ -5,3 +5,13 @@
 body{
   background-color: rgb(255, 255, 255);
 }
+
+.gradient_background {
+  background: linear-gradient(200deg, rgb(0, 134, 164), rgb(29, 190, 152));
+  height: 100vh;
+  width: 100vw;
+};
+
+.buttonblue_background {
+  background:  rgb(68, 187, 178);
+}
