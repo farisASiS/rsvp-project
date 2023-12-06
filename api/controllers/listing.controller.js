@@ -1,4 +1,5 @@
 import Listing from "../models/listing.model.js";
+import Rsvp from "../models/rsvp.model.js";
 import { errorHandler } from "../utils/error.js";
 
 export const createListing = async (req, res, next) => {
@@ -60,5 +61,18 @@ export const getListing = async (req, res, next) => {
     res.status(200).json(listing);
   } catch (error) {
     next(error);
+  }
+};
+
+export const getRsvps = async (req, res, next) => {
+  try {
+    const rsvps = await Rsvp.find({ listingRef: req.params.id});
+    if (!rsvps) {
+      return next(errorHandler(404, 'Tiada RSVP dalam rekod!'));
+    }
+    res.status(200).json(rsvps);
+  } catch (error) {
+    next(error);
+    console.log(error);
   }
 };
