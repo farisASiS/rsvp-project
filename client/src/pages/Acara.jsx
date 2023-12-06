@@ -16,6 +16,45 @@ export default function Acara() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const params = useParams();
+  const [formData, setFormData] = useState({});
+
+  const handleChange = (e) => {
+    setFormData(
+      {
+        ...formData,
+        [e.target.id]: e.target.value,
+      });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const res = await fetch('/api/rsvp/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({...formData, listingRef: `${params.listingId}`}),
+      });
+      const data = await res.json();
+      console.log(data);
+      if(data.success === false) {
+        setLoading(false);
+        setError(data.message);
+        return;
+      };
+      setLoading(false);
+      setError(null);
+      alert('RSVP anda berjaya didaftarkan!');
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
+      console.log(error.message);
+
+    }
+  };
+
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -38,6 +77,7 @@ export default function Acara() {
     };
     fetchListing();
   }, [params.listingId]);
+
   return (
     <main className=''>
       {loading && <p className='text-center text-[#038CA2] my-7 text-2xl'>Loading...</p>}
@@ -88,28 +128,31 @@ export default function Acara() {
             <hr />
             <p className='text-xl text-[#038CA2] uppercase font-semibold text-center'>RSVP</p>
 
-            <form className='flex flex-col gap-4'>
+            <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
               <input 
                 type="text" 
                 placeholder='nama'                
                 className='border p-3 rounded-3xl drop-shadow-md' 
-                id='username' 
+                onChange={handleChange}
+                id='name' 
               />
               <input 
                 type="email" 
                 placeholder='email' 
                 className='border p-3 rounded-3xl drop-shadow-md' 
+                onChange={handleChange}
                 id='email' 
               />
               <input 
-                type="text" 
+                type="number" 
                 placeholder='nombor telefon' 
                 className='border p-3 rounded-3xl drop-shadow-md' 
-                id='password' 
+                onChange={handleChange}
+                id='phone' 
               />
-              <button className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+              <button className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl hover:opacity-75 
               disabled:-80 my-5'>
-                Hantar RSVP
+                {loading ? 'Dalam proses...': 'HANTAR RSVP'}
               </button>
             </form>
 
