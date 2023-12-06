@@ -14,4 +14,20 @@ body{
 
 .buttonblue_background {
   background:  rgb(68, 187, 178);
-}
+};
+
+/* table {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+};
+
+table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: gray;
+}; */

@@ -9,6 +9,7 @@ import Akaun from './pages/Akaun'
 import CiptaAcara from './pages/CiptaAcara'
 import KemaskiniAcara from './pages/KemaskiniAcara'
 import Acara from './pages/Acara'
+import Rsvp from './pages/Rsvp'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/akaun" element={<Akaun />} />
           <Route path="/cipta-acara" element={<CiptaAcara />} />
           <Route path="/kemaskini-acara/:listingId" element={<KemaskiniAcara />} />
+          <Route path='/kemaskini-acara/rsvp/:listingId' element={<Rsvp/>}/>
         </Route>
         <Route path="/daftar-masuk" element={<DaftarMasuk />} />
         <Route path="/daftar-akaun" element={<DaftarAkaun />} />

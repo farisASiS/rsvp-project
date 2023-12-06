@@ -192,7 +192,7 @@ export default function CiptaAcara() {
             {loading ? 'Kemaskini...' : 'Kemaskini acara'}
           </button>
           {error && <p className='text-red-700 text-sm'>{error}</p>}
-          <Link to="/cipta-acara" className='border-solid border-2 border-[#0086A4] text-[#0086A4] p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+          <Link to={`/kemaskini-acara/rsvp/${params.listingId}`} className='border-solid border-2 border-[#0086A4] text-[#0086A4] p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
            disabled:-80 text-center' >
            Semak RSVP
           </Link>
