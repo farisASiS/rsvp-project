@@ -22,6 +22,18 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    googleUrl:{
+      type: String,
+      required: true,
+    },
+    personInCharge:{
+      type: String,
+      required: true,
+    },
+    phone:{
+      type: String,
+      required: true,
+    },
     imageUrls:{
       type: Array,
       required: true,

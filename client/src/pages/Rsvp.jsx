@@ -6,6 +6,7 @@ export default function Rsvp() {
   const [listingRsvps, setListingRsvps] = useState([]);
   const [ error , setError ] = useState(false);
   const params = useParams();
+  const [titleListing, setTitleListing] = useState();
 
   useEffect(() => {
 
@@ -26,6 +27,22 @@ export default function Rsvp() {
       }
     };
     fetchRsvps();
+
+    const fetchListingTitle = async () => {
+      const listingId = params.listingId;
+      const res = await fetch(`/api/listing/get/${listingId}`);
+      const data = await res.json();
+      console.log(data.title);
+      if(data.success === false) {
+        console.log(data.message);
+        return;
+      }
+      setTitleListing(data.title);
+    };
+
+    fetchListingTitle();
+
+
   }, [params.listingId]);
 
 
@@ -35,13 +52,13 @@ export default function Rsvp() {
       <div className='text-[#0086A4] text-5xl text-center font-semibold my-7' >
         RSVP
       </div>
-      <p className='text-xl text-[#038CA2] font-semibold text-center'>Acara </p>
+      <p className='text-xl text-[#038CA2] font-semibold text-center mb-3'>{titleListing}</p>
       {listingRsvps && 
         
           <table className='border-collapse border border-[#0086A4]' >
             <thead>
               <tr>
-                <th className='border border-[#0086A4] p-1'>No</th>
+                <th className='border border-[#0086A4] p-1 w-[40px]'>No</th>
                 <th className='border border-[#0086A4] p-1'>Nama</th>
                 <th className='border border-[#0086A4] p-1'>Email</th>
                 <th className='border border-[#0086A4] p-1'>Telefon</th>
@@ -50,7 +67,7 @@ export default function Rsvp() {
             <tbody>
               {listingRsvps.map((rsvps, index) => (
                 <tr>
-                  <td className='border border-[#0086A4] p-1' key='index'>{index+1}</td>
+                  <td className='border border-[#0086A4] p-1 w-[40px] text-center' key='index'>{index+1}</td>
                   <td className='border border-[#0086A4] p-1' key='name'>{rsvps.name}</td>
                   <td className='border border-[#0086A4] p-1' key='email'>{rsvps.email}</td>
                   <td className='border border-[#0086A4] p-1' key='phone'>+60{rsvps.phone}</td>

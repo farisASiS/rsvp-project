@@ -76,6 +76,7 @@ export default function Acara() {
       }
     };
     fetchListing();
+
   }, [params.listingId]);
 
   return (
@@ -85,7 +86,7 @@ export default function Acara() {
       {listing && !loading && !error && 
       (
         <div>
-          <Swiper navigation>
+          {/* <Swiper navigation>
             {listing.imageUrls.map((url) => (
               <SwiperSlide key={url}>
                 <div
@@ -97,7 +98,8 @@ export default function Acara() {
                 </div>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> */}
+          <img src={listing.imageUrls} alt="" className='mx-auto object-cover max-w-[896px]'/>
           <div className='flex flex-col max-w-4xl mx-auto px-5 my-7 gap-4'>
             <p className='text-2xl text-[#038CA2] uppercase font-bold'>{listing.title}</p>
             <p className='text-slate-500'>{listing.description}</p>
@@ -113,17 +115,17 @@ export default function Acara() {
              <MdLocationOn className='h-5 w-5 text-[#038CA2]'/>
              <p className='text-slate-500'>{listing.location}</p>
             </div>
-            <Link to="https://maps.app.goo.gl/JGZwLBaL9KcQsXRh9"> {/* fetch rsvp */}
+            <Link to={listing.googleUrl}> {/* fetch rsvp */}
               <p className='text-blue-500 underline'>Buka lokasi di Google map</p>
             </Link>
             <div className='flex gap-2'>
-              <Link to="https://api.whatsapp.com/send?phone=60126735145"> {/* fetch rsvp */}
+              <Link to={`https://api.whatsapp.com/send?phone=6${listing.phone}`}> {/* fetch rsvp */}
                <FaWhatsapp className='h-5 w-5 text-[#038CA2]' />
               </Link>
-              <Link to="tel:01163430496">
+              <Link to={`tel:${listing.phone}`}>
                <IoIosCall className='h-5 w-5 text-[#038CA2]' /> {/* fetch rsvp */}
               </Link>
-              <p className='text-slate-500'>En Rizalman</p> {/* fetch rsvp */}
+              <p className='text-slate-500'>{listing.personInCharge}</p> {/* fetch rsvp */}
             </div>
             <hr />
             <p className='text-xl text-[#038CA2] uppercase font-semibold text-center'>RSVP</p>

@@ -192,6 +192,9 @@ export default function Akaun() {
                 <Link to={`/kemaskini-acara/${listing._id}`}>
                 <button className='text-green-700 uppercase'>Kemaskini</button>
                 </Link>
+                <Link to={`/kemaskini-acara/rsvp/${listing._id}`}>
+                <button className='text-slate-700 uppercase'>RSVP</button>
+                </Link>
               </div>
             </div>
           ))}

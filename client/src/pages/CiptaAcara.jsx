@@ -164,6 +164,15 @@ export default function CiptaAcara() {
           <p className='text-xl text-[#038CA2] font-semibold'>Lokasi</p>
           <input type='text' placeholder='Lokasi' className='border p-3 rounded-3xl drop-shadow-md' id='location' required onChange={handleChange} value={formData.location}/>
 
+          <p className='text-xl text-[#038CA2] font-semibold'>Link Google Map</p>
+          <input type='text' placeholder='Link Google Map' className='border p-3 rounded-3xl drop-shadow-md' id='googleUrl' required onChange={handleChange} value={formData.googleUrl}/>
+          
+          <p className='text-xl text-[#038CA2] font-semibold'>Orang untuk dihubungi</p>
+          <input type='text' placeholder='orang untuk dihubungi' className='border p-3 rounded-3xl drop-shadow-md' id='personInCharge' required onChange={handleChange} value={formData.personInCharge}/>
+          
+          <p className='text-xl text-[#038CA2] font-semibold'>No telefon</p>
+          <input type='text' placeholder='no telefon' className='border p-3 rounded-3xl drop-shadow-md' id='phone' required onChange={handleChange} value={formData.phone}/>
+
 
           <button disabled={loading || uploading} className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
         disabled:-80 my-5'>
