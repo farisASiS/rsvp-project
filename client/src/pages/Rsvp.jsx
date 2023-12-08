@@ -49,28 +49,28 @@ export default function Rsvp() {
 
   return (
     <main className='flex flex-col p-3 max-w-4xl mx-auto'>
-      <div className='text-[#0086A4] text-5xl text-center font-semibold my-7' >
+      <div className='text-white text-5xl text-center font-semibold my-7' >
         RSVP
       </div>
-      <p className='text-xl text-[#038CA2] font-semibold text-center mb-3'>{titleListing}</p>
+      <p className='text-xl text-white font-semibold text-center mb-3'>{titleListing}</p>
       {listingRsvps && 
         
-          <table className='border-collapse border border-[#0086A4]' >
+          <table className='border-collapse border border-white shadow-lg' >
             <thead>
               <tr>
-                <th className='border border-[#0086A4] p-1 w-[40px]'>No</th>
-                <th className='border border-[#0086A4] p-1'>Nama</th>
-                <th className='border border-[#0086A4] p-1'>Email</th>
-                <th className='border border-[#0086A4] p-1'>Telefon</th>
+                <th className='border border-white p-1 w-[40px] text-white'>No</th>
+                <th className='border border-white p-1 text-white'>Nama</th>
+                <th className='border border-white p-1 text-white'>Email</th>
+                <th className='border border-white p-1 text-white'>Telefon</th>
               </tr>
             </thead>
             <tbody>
               {listingRsvps.map((rsvps, index) => (
                 <tr>
-                  <td className='border border-[#0086A4] p-1 w-[40px] text-center' key='index'>{index+1}</td>
-                  <td className='border border-[#0086A4] p-1' key='name'>{rsvps.name}</td>
-                  <td className='border border-[#0086A4] p-1' key='email'>{rsvps.email}</td>
-                  <td className='border border-[#0086A4] p-1' key='phone'>+60{rsvps.phone}</td>
+                  <td className='border border-white p-1 text-white w-[40px] text-center' key='index'>{index+1}</td>
+                  <td className='border border-white p-1 text-white' key='name'>{rsvps.name}</td>
+                  <td className='border border-white p-1 text-white' key='email'>{rsvps.email}</td>
+                  <td className='border border-white p-1 text-white' key='phone'>+60{rsvps.phone}</td>
                 </tr>
               ))}
             </tbody>

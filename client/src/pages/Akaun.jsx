@@ -125,9 +125,9 @@ export default function Akaun() {
 
   return (
     <div className='p-3 mb-20 max-w-lg mx-auto'>
-      <h1 className='text-[#0086A4] text-5xl text-center font-semibold my-7'>Hi {currentUser.username}!</h1>
+      <h1 className='text-white text-5xl text-center font-semibold my-7'>Hi {currentUser.username}!</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-        <CgProfile className='text-[#0086A4] mx-auto h-[150px] w-[150px] my-7'/>
+        <CgProfile className='text-white mx-auto h-[150px] w-[150px] my-7'/>
         <input 
           type="text" 
           placeholder='nama pengguna' 
@@ -151,18 +151,18 @@ export default function Akaun() {
           id='password' 
           onChange={handleChange}
         />
-        <button disabled={loading} className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        <button disabled={loading} className='gradient_background text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
         disabled:-80 my-5'>
           {loading ? 'Loading...' : 'Kemaskini Profil'}
         </button>
-        <Link to="/cipta-acara" className='border-solid border-2 border-[#0086A4] text-[#0086A4] p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        <Link to="/cipta-acara" className='border-solid border-2 border-white text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
         disabled:-80 text-center' >
           Cipta acara
         </Link>
       </form>
       <div className='flex justify-between mt-5'>
-        <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>Hapus Akaun</span>
-        <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>Daftar Keluar</span>
+        <span onClick={handleDeleteUser} className='text-white cursor-pointer'>Hapus Akaun</span>
+        <span onClick={handleSignOut} className='text-white cursor-pointer'>Daftar Keluar</span>
       </div>
       <p className='text-red-700 mt-5' >{error ? error: ''}</p>
       <p className='text-green-700 mt-5' >{updateSuccess ? 'Akaun berjaya dikemaskini!': ''}</p>
@@ -173,14 +173,14 @@ export default function Akaun() {
 
       {userListings && 
         userListings.length > 0 && 
-        <div className='mb-20 flex flex-col gap-4'>
-          <h1 className='text-[#0086A4] text-center mt-7 text-2xl font-semibold'>Acara Anda</h1>
+        <div className='mb-5 flex flex-col gap-4'>
+          <h1 className='text-white text-center mt-7 text-2xl font-semibold'>Acara Anda</h1>
           {userListings.map((listing) => (
             <div key={listing._id}
-            className='border border-[#0086A4] drop-shadow-md rounded-lg p-3 flex justify-between items-center gap-4'>
+            className='b bg-white border border-[#0086A4] drop-shadow-md rounded-lg p-3 flex justify-between items-center gap-4'>
               <Link to={`/acara/${listing._id}`}>
                 <img src={listing.imageUrls[0]} alt="listing cover" 
-                className='h-16 w-16 object-contain'/>
+                className='h-16 w-16 object-contain border rounded-lg shadow-md'/>
               </Link>
               <Link className='flex-1 text-[#0086A4] font-semibold hover:underline truncate' 
               to={`/acara/${listing._id}`}>

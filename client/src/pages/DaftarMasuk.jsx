@@ -45,7 +45,7 @@ export default function DaftarMasuk() {
     }
   };
   return (
-    <div className='gradient_background p-3 pt-20 max-w-lg mx-auto'>
+    <div className='p-3 pt-20 max-w-lg mx-auto'>
       <h1 className = 'text-white text-5xl text-center font-semibold my-7'>Daftar Masuk</h1>
       <CgProfile className='text-white mx-auto h-[150px] w-[150px] my-7' />
 
@@ -54,7 +54,7 @@ export default function DaftarMasuk() {
         className='border p-3 rounded-3xl drop-shadow-md' id='email' onChange={handleChange}/>
         <input type="password" placeholder='kata laluan'
         className='border p-3 rounded-3xl drop-shadow-md' id='password' onChange={handleChange}/>
-        <button disabled = {loading} className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
+        <button disabled = {loading} className='gradient_background text-white p-3 drop-shadow-md rounded-3xl uppercase hover:opacity-75 
         disabled:-80 my-5'>
           {loading ? 'Loading...' : 'Daftar Masuk'}
           </button>

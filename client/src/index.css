@@ -3,17 +3,19 @@
 @tailwind utilities;
 
 body{
-  background-color: rgb(255, 255, 255);
+  background-color: #0086A4;
 }
 
 .gradient_background {
-  background: linear-gradient(200deg, rgb(0, 134, 164), rgb(29, 190, 152));
-  height: 100vh;
-  width: 100vw;
+  background: linear-gradient(90deg, #00A0C3, #22C2D8);
+  height: auto;
+  width: auto;
 };
 
-.buttonblue_background {
-  background:  rgb(68, 187, 178);
+.button_blue {
+  background: linear-gradient(180deg, #00A0C3, #22C2D8);
+  height: auto;
+  width: auto;
 };
 
 /* table {

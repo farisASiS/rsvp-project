@@ -81,8 +81,8 @@ export default function Acara() {
 
   return (
     <main className=''>
-      {loading && <p className='text-center text-[#038CA2] my-7 text-2xl'>Loading...</p>}
-      {error && <p className='text-center text-[#038CA2] my-7 text-2xl'>Kesilapan Paparan Halaman!</p>}
+      {loading && <p className='text-center text-white my-7 text-2xl'>Loading...</p>}
+      {error && <p className='text-center text-white my-7 text-2xl'>Kesilapan Paparan Halaman!</p>}
       {listing && !loading && !error && 
       (
         <div>
@@ -99,36 +99,36 @@ export default function Acara() {
               </SwiperSlide>
             ))}
           </Swiper> */}
-          <img src={listing.imageUrls} alt="" className='mx-auto object-cover max-w-[896px]'/>
+          <img src={listing.imageUrls} alt="" className='object-cover max-w-[896px] shadow-md'/>
           <div className='flex flex-col max-w-4xl mx-auto px-5 my-7 gap-4'>
-            <p className='text-2xl text-[#038CA2] uppercase font-bold'>{listing.title}</p>
-            <p className='text-slate-500'>{listing.description}</p>
+            <p className='text-2xl text-white uppercase font-bold'>{listing.title}</p>
+            <p className='text-white'>{listing.description}</p>
             <div className='flex gap-2'>
-              <BsCalendarDate className='h-5 w-5 text-[#038CA2]' />
-              <p className='text-slate-500'>{listing.date}</p>
+              <BsCalendarDate className='h-5 w-5 text-white' />
+              <p className='text-white'>{listing.date}</p>
             </div>
             <div className='flex gap-2'>
-              <LuAlarmClock className='h-5 w-5 text-[#038CA2]' />
-              <p className='text-slate-500'>{listing.time}</p>
+              <LuAlarmClock className='h-5 w-5 text-white' />
+              <p className='text-white'>{listing.time}</p>
             </div>
             <div className='flex gap-2'>
-             <MdLocationOn className='h-5 w-5 text-[#038CA2]'/>
-             <p className='text-slate-500'>{listing.location}</p>
+             <MdLocationOn className='h-5 w-5 text-white'/>
+             <p className='text-white'>{listing.location}</p>
             </div>
             <Link to={listing.googleUrl}> {/* fetch rsvp */}
-              <p className='text-blue-500 underline'>Buka lokasi di Google map</p>
+              <p className='text-white underline'>Buka lokasi di Google map</p>
             </Link>
             <div className='flex gap-2'>
               <Link to={`https://api.whatsapp.com/send?phone=6${listing.phone}`}> {/* fetch rsvp */}
-               <FaWhatsapp className='h-5 w-5 text-[#038CA2]' />
+               <FaWhatsapp className='h-5 w-5 text-white' />
               </Link>
               <Link to={`tel:${listing.phone}`}>
-               <IoIosCall className='h-5 w-5 text-[#038CA2]' /> {/* fetch rsvp */}
+               <IoIosCall className='h-5 w-5 text-white' /> {/* fetch rsvp */}
               </Link>
-              <p className='text-slate-500'>{listing.personInCharge}</p> {/* fetch rsvp */}
+              <p className='text-white'>{listing.personInCharge}</p> {/* fetch rsvp */}
             </div>
             <hr />
-            <p className='text-xl text-[#038CA2] uppercase font-semibold text-center'>RSVP</p>
+            <p className='text-xl text-white uppercase font-semibold text-center'>RSVP</p>
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
               <input 
@@ -152,7 +152,7 @@ export default function Acara() {
                 onChange={handleChange}
                 id='phone' 
               />
-              <button className='bg-[#44BBB2] text-white p-3 drop-shadow-md rounded-3xl hover:opacity-75 
+              <button className='gradient_background text-white p-3 drop-shadow-md rounded-3xl hover:opacity-75 
               disabled:-80 my-5'>
                 {loading ? 'Dalam proses...': 'HANTAR RSVP'}
               </button>
