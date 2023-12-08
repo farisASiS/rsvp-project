@@ -36,7 +36,7 @@ export default function DropdownAkaun() {
 
 
   return (
-    <div>
+    <div className=''>
       <ul className='grid absolute top-[60px] right-7 bg-white w-auto text-right border rounded-xl p-3'>
         <CgProfile className='h-[50px] w-[50px] justify-self-end text-[#0086A4]'/>
         <li className='text-2xl font-semibold text-[#0086A4]'>{currentUser ? currentUser.username : ''}</li>
@@ -50,7 +50,7 @@ export default function DropdownAkaun() {
           <CgProfile className='h-7 w-7 m-1 text-[#0086A4]'/>
           <li className='text-lg text-slate-600'>Akaun</li>
         </Link>
-        <Link className='flex flex-row-reverse items-center gap-2' to='/utama'>
+        <Link className='flex flex-row-reverse items-center gap-2' to='/paparan-acara'>
           <FaPenSquare className='h-7 w-7 m-1 text-[#0086A4]'/>
           <li className='text-lg text-slate-600'>Acara</li>
         </Link>

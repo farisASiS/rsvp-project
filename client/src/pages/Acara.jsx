@@ -80,7 +80,7 @@ export default function Acara() {
   }, [params.listingId]);
 
   return (
-    <main className=''>
+    <main className='z-0'>
       {loading && <p className='text-center text-white my-7 text-2xl'>Loading...</p>}
       {error && <p className='text-center text-white my-7 text-2xl'>Kesilapan Paparan Halaman!</p>}
       {listing && !loading && !error && 
