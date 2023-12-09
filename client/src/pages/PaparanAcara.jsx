@@ -62,15 +62,15 @@ export default function Akaun() {
   return (
     <div className='p-3 mb-20 max-w-lg mx-auto'>
       <h1 className='text-white text-5xl text-center font-semibold my-7'>Paparan Acara</h1>
-
-      {userListings && 
-        userListings.length > 0 && 
-        <div className='z-0 mb-5 flex flex-col gap-4'>
+      {userListings ? '': <div>Anda belum mempunyai acara</div>}
         <Link to="/cipta-acara" className='b bg-white flex justify-between border-solid border-2 p-3 drop-shadow-md rounded-lg hover:opacity-75 
-        disabled:-80' >
+        disabled:-80 mb-4' >
           <div className='text-[#0086A4] font-semibold'>CIPTA ACARA BARU</div>
           <BiPlusCircle className='h-6 w-6 text-[#0086A4]'/>
         </Link>
+      {userListings && 
+        userListings.length > 0 && 
+        <div className='z-0 mb-5 flex flex-col gap-4'>
           {userListings.map((listing) => (
             <div key={listing._id}
             className='b bg-white border border-[#0086A4] drop-shadow-md rounded-lg p-3 flex justify-between items-center gap-4'>

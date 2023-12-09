@@ -80,7 +80,7 @@ export default function Acara() {
   }, [params.listingId]);
 
   return (
-    <main className='z-0'>
+    <main >
       {loading && <p className='text-center text-white my-7 text-2xl'>Loading...</p>}
       {error && <p className='text-center text-white my-7 text-2xl'>Kesilapan Paparan Halaman!</p>}
       {listing && !loading && !error && 
@@ -99,8 +99,8 @@ export default function Acara() {
               </SwiperSlide>
             ))}
           </Swiper> */}
-          <img src={listing.imageUrls} alt="" className='object-cover max-w-[896px] shadow-md'/>
-          <div className='flex flex-col max-w-4xl mx-auto px-5 my-7 gap-4'>
+          <img src={listing.imageUrls} alt="" className='object-cover max-w-[896px] shadow-md mx-auto'/>
+          <div className='flex flex-col max-w-4xl mx-auto px-5 my-7 gap-3'>
             <p className='text-2xl text-white uppercase font-bold'>{listing.title}</p>
             <p className='text-white'>{listing.description}</p>
             <div className='flex gap-2'>
@@ -115,17 +115,23 @@ export default function Acara() {
              <MdLocationOn className='h-5 w-5 text-white'/>
              <p className='text-white'>{listing.location}</p>
             </div>
-            <Link to={listing.googleUrl}> {/* fetch rsvp */}
+            <Link to={listing.googleUrl}>
               <p className='text-white underline'>Buka lokasi di Google map</p>
             </Link>
-            <div className='flex gap-2'>
-              <Link to={`https://api.whatsapp.com/send?phone=6${listing.phone}`}> {/* fetch rsvp */}
-               <FaWhatsapp className='h-5 w-5 text-white' />
+            <hr />
+            <div className='flex flex-col'>
+              <p className='text-white text-xl font-semibold'>Hubungi:</p>
+              <p className='text-white'>{listing.personInCharge}</p>
+              <Link to={`https://api.whatsapp.com/send?phone=6${listing.phone}`} className='flex
+              gap-2'> 
+               <FaWhatsapp className='h-4 w-4 my-auto text-white' />
+               <p className='my-auto text-white'>{listing.phone}</p>
               </Link>
-              <Link to={`tel:${listing.phone}`}>
-               <IoIosCall className='h-5 w-5 text-white' /> {/* fetch rsvp */}
+              <Link to={`tel:${listing.phone}`} className='flex
+              gap-2'>
+               <IoIosCall className='h-4 w-4 my-auto text-white' /> 
+               <p className='my-auto text-white'>{listing.phone}</p>
               </Link>
-              <p className='text-white'>{listing.personInCharge}</p> {/* fetch rsvp */}
             </div>
             <hr />
             <p className='text-xl text-white uppercase font-semibold text-center'>RSVP</p>
